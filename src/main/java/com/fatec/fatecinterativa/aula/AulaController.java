@@ -30,9 +30,9 @@ public class AulaController {
 		return ResponseEntity.ok().body(aulaRepository.findById(id).get());
 	}
 	
-	@GetMapping("/sala")
-	public List<Aula> findBySala() {
-		return aulaRepository.findAll();
+	@GetMapping("/sala/{idSala}")
+	public List<Aula> findBySala(@PathVariable Integer idSala) {
+		return aulaRepository.findBySala(idSala);
 	}
 	
 	@GetMapping("/professor")

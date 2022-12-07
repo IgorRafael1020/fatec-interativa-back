@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.fatecinterativa.usuario.Usuario;
 import com.fatec.fatecinterativa.usuario.UsuarioRepository;
 
+@RestController
+@RequestMapping("/usuario")
 public class UsuarioController {
 	
 	@Autowired
@@ -27,16 +31,6 @@ public class UsuarioController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
 		return ResponseEntity.ok().body(usuarioRepository.findById(id).get());
-	}
-	
-	@GetMapping()
-	public List<Usuario> findBySala() {
-		return usuarioRepository.findAll();
-	}
-	
-	@GetMapping()
-	public List<Usuario> findByProfessor() {
-		return usuarioRepository.findAll();
 	}
 	
 	@PostMapping

@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.fatecinterativa.predio.Predio;
 import com.fatec.fatecinterativa.predio.PredioRepository;
 
+@RestController
+@RequestMapping("/predio")
 public class PredioController {
 
 	@Autowired
@@ -27,16 +31,6 @@ public class PredioController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Predio> findById(@PathVariable Integer id) {
 		return ResponseEntity.ok().body(predioRepository.findById(id).get());
-	}
-	
-	@GetMapping()
-	public List<Predio> findBySala() {
-		return predioRepository.findAll();
-	}
-	
-	@GetMapping()
-	public List<Predio> findByProfessor() {
-		return predioRepository.findAll();
 	}
 	
 	@PostMapping
